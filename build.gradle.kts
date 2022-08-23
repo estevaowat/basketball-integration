@@ -44,7 +44,7 @@ tasks.withType<JavaCompile> {
 tasks.register<Copy>("installGitHook") {
     from("${rootProject.rootDir}/scripts/pre-commit")
     into("${rootProject.rootDir}/.git/hooks")
-    fileMode = 775;
+    fileMode = 0x777
 }
 
 tasks.getByName("build").dependsOn("installGitHook")
