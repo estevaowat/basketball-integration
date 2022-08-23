@@ -1,6 +1,11 @@
+import com.adarshr.gradle.testlogger.TestLoggerExtension
+import com.adarshr.gradle.testlogger.TestLoggerPlugin
+import com.adarshr.gradle.testlogger.theme.ThemeType
+
 plugins {
     java
     id("io.quarkus")
+    id("com.adarshr.test-logger") version "3.2.0"
 }
 
 repositories {
@@ -48,3 +53,11 @@ tasks.register<Copy>("installGitHook") {
 }
 
 tasks.getByName("build").dependsOn("installGitHook")
+
+
+plugins.withType<TestLoggerPlugin> {
+    configure<TestLoggerExtension> {
+        theme = ThemeType.MOCHA
+        slowThreshold = 10000
+    }
+}

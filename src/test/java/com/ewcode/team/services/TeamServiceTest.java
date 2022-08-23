@@ -15,7 +15,7 @@ import java.net.URISyntaxException;
 import java.util.List;
 
 @QuarkusTest
-public class TeamServiceTest {
+class TeamServiceTest {
   @Inject TeamService teamService;
   @InjectMock TeamRepository teamRepository;
   @InjectMock TeamValidator teamValidator;
