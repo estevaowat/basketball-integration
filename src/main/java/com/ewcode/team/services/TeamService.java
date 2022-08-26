@@ -34,11 +34,11 @@ public class TeamService {
 
     File file = getFileFromSource();
     FileReader fileReader = new FileReader(file);
-    Iterable<CSVRecord> records = csvFormatter.parse(fileReader);
+    Iterable<CSVRecord> teamsFromSource = csvFormatter.parse(fileReader);
 
     List<Team> teams = new ArrayList<>();
 
-    for (CSVRecord teamRecord : records) {
+    for (CSVRecord teamRecord : teamsFromSource) {
       TeamDto teamDto = createTeamDto(teamRecord);
       List<String> errors = teamValidator.validate(teamDto);
 
